@@ -27,7 +27,7 @@ const firebaseCloudMessaging = {
 
         // Request the push notification permission from browser
         const status = await Notification.requestPermission();
-        if (status && status === 'granted') {
+        // if (status && status === 'granted') {
           // Get new token from Firebase
           const fcm_token = await messaging.getToken({
             vapidKey: 'BP93C7WuTic-qeOk0s-BGxZBHXkYDmGEtvMoCuRJzi7PuOLLktk4Y0Pw1ym4u8bnO2GZ9rvcPP_aYB2iZw1yHag',
@@ -38,7 +38,7 @@ const firebaseCloudMessaging = {
             localforage.setItem('fcm_token', fcm_token);
             return fcm_token;
           }
-        }
+        // }
       } catch (error) {
         console.error(error);
         return null;

@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useEffect, useState } from 'react';
-import * as firebase from 'firebase/app';
 import 'firebase/messaging';
 import { firebaseCloudMessaging } from '../utils/firebase';
 export default function Home() {
