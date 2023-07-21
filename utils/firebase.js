@@ -7,12 +7,6 @@ const firebaseCloudMessaging = {
     if (!firebase?.apps?.length) {
       // Initialize the Firebase app with the credentials
       firebase?.initializeApp({
-        // apiKey: 'your_api_key',
-        // authDomain: 'your_auth_domain',
-        // projectId: 'your_project_id',
-        // storageBucket: 'your_storage_bucket',
-        // messagingSenderId: 'your_messagin_sender_id',
-        // appId: 'your_app_id',
         apiKey: 'AIzaSyB-8k-PYuYvOcLMKG8dcpXLe5Rok_uOQNk',
         authDomain: 'push-notification-881ed.firebaseapp.com',
         projectId: 'push-notification-881ed',
