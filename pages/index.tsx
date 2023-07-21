@@ -1,8 +1,38 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-
+import { useEffect, useState } from 'react';
+import * as firebase from 'firebase/app';
+import 'firebase/messaging';
+import { firebaseCloudMessaging } from '../utils/firebase';
 export default function Home() {
+
+  const [tokenValue,setTokenValue]=useState('')
+  useEffect(() => {
+    setToken();
+
+    // Event listener that listens for the push notification event in the background
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.addEventListener('message', (event) => {
+        console.log('event for the service worker', event);
+      });
+    }
+
+    // Calls the getMessage() function if the token is there
+    async function setToken() {
+      try {
+        const token = await firebaseCloudMessaging.init();
+       
+        if (token) {
+          console.log('token', token);
+          setTokenValue(token)
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  },[]);
+
   async function askNotificationPermission() {
     try {
       const permissionResult = await Notification.requestPermission();
@@ -45,6 +75,7 @@ export default function Home() {
       <button onClick={handleNotificationPermission}>
         Enable Push Notifications
       </button>
+      <textarea value={tokenValue} onChange={()=>''}></textarea>
     </div>
     </div>
   )
