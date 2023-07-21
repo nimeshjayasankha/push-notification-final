@@ -18,7 +18,7 @@ export default function Home() {
     }
 
     // Calls the getMessage() function if the token is there
-  }, [tokenValue]);
+  });
 
   const setToken = async () => {
     try {
