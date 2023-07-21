@@ -8,8 +8,6 @@ export default function Home() {
 
   const [tokenValue, setTokenValue] = useState('')
   useEffect(() => {
-    setToken();
-
     // Event listener that listens for the push notification event in the background
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.addEventListener('message', (event) => {
