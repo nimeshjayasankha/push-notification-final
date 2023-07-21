@@ -18,12 +18,12 @@ export default function Home() {
     }
 
     // Calls the getMessage() function if the token is there
-  }, []);
+  }, [tokenValue]);
 
-  async function setToken() {
+  const setToken = async () => {
     try {
       const token = await firebaseCloudMessaging.init();
-
+      alert(token)
       if (token) {
         console.log('token', token);
         setTokenValue(token)
@@ -33,7 +33,7 @@ export default function Home() {
     }
   }
 
-  async function askNotificationPermission() {
+  const askNotificationPermission = async () => {
     try {
       const permissionResult = await Notification.requestPermission();
       return permissionResult;
@@ -43,7 +43,7 @@ export default function Home() {
     }
   }
 
-  async function handleNotificationPermission() {
+  const handleNotificationPermission = async () => {
     const permissionResult = await askNotificationPermission();
     if (permissionResult === "granted") {
       setToken()
